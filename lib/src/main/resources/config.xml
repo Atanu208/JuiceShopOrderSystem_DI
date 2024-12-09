@@ -16,9 +16,13 @@
             </props>
         </property>
     </bean>
+
+    <bean class="org.springframework.jdbc.datasource.SingleConnectionDataSource" id="dataSource2" parent="dataSource">
+
+    </bean>
     <!-- DAO -->
     <bean id="orderDao" class="com.app.juiceshop.dao.OrderDaoImpl">
-        <constructor-arg ref="dataSource"/>
+        <constructor-arg ref="dataSource2"/>
     </bean>
 
     <!-- Service -->
