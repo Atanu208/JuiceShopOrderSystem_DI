@@ -18,5 +18,8 @@ dependencies {
     implementation("org.springframework:spring-tx:6.2.0")
 // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
     implementation("com.mysql:mysql-connector-j:9.1.0")
+    // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+    implementation("com.zaxxer:HikariCP:6.2.1")
+
 
 }

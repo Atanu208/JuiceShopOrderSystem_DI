@@ -11,11 +11,11 @@ public class Test {
 
         // Create a new order
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setOrderId(8);
-        orderDTO.setCustomerName("Sam Altman");
-        orderDTO.setJuiceType("Lemon Juice");
-        orderDTO.setPrice(10);
-        orderDTO.setQuantity(60);
+        orderDTO.setOrderId(9);
+        orderDTO.setCustomerName("Rakesh Pal");
+        orderDTO.setJuiceType("Grapefruit juice");
+        orderDTO.setPrice(80);
+        orderDTO.setQuantity(6);
 
         try {
             // Place the order
