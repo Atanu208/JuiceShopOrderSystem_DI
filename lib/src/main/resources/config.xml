@@ -10,16 +10,18 @@
         <property name="password" value=""/>
     </bean>
 
-    <bean class="org.springframework.jdbc.datasource.SingleConnectionDataSource" id="dataSource2" parent="dataSource">
+    <bean class="org.springframework.jdbc.datasource.SingleConnectionDataSource" id="singleConnectionDataSource" parent="dataSource">
     </bean>
 
-    <bean class="com.zaxxer.hikari.HikariDataSource" id="hikariDataSource" parent="dataSource">
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/finisher_9"/>
-    </bean>
+
 
     <!-- DAO -->
     <bean id="orderDao" class="com.app.juiceshop.dao.OrderDaoImpl">
-        <constructor-arg ref="hikariDataSource"/>
+        <constructor-arg name="dataSource">
+            <bean class="com.zaxxer.hikari.HikariDataSource" id="hikariDataSource" parent="singleConnectionDataSource">
+                <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/finisher_9"/>
+            </bean>
+        </constructor-arg>
     </bean>
 
     <!-- Service -->
@@ -29,7 +31,11 @@
 
     <!-- Controller -->
     <bean id="orderController" class="com.app.juiceshop.controller.OrderController">
-        <constructor-arg ref="orderService"/>
+        <constructor-arg name="orderService">
+            <bean class="com.app.juiceshop.service.OrderServiceImpl">
+                <constructor-arg ref="orderDao"/>
+            </bean>
+    </constructor-arg>
     </bean>
 
 </beans>
